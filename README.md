@@ -62,17 +62,7 @@ uv pip install -r requirements.txt
 
 > **참고:** `requirements.txt` 파일이 없는 경우, `pyproject.toml`을 참고하여 필요한 패키지를 직접 설치하세요.
 
-## 6. 환경 변수 설정 (필요한 경우)
-
-특정 API 키나 환경 변수가 필요한 경우, 프로젝트 루트에 `.env` 파일을 생성하여 환경변수를 설정하세요.
-
-```env
-# 예시
-OPENAI_API_KEY=<YOUR_API_KEY>
-GOOGLE_API_KEY=<YOUR_API_KEY>
-```
-
-## 7. 프로젝트 실행
+## 6. 프로젝트 실행
 
 설정이 완료되면 아래 명령어로 프로젝트를 실행할 수 있습니다.
 
