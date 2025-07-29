@@ -1,0 +1,85 @@
+{
+    'messages': [
+        # 1. 사용자가 에이전트에게 보낸 최초의 자연어 메시지
+        HumanMessage(
+            content='서울 날씨 어때?',
+            additional_kwargs={},
+            response_metadata={},
+            id='1e0f3f41-745a-461d-8c76-1d8f85097726'
+        ),
+
+        # 2. LLM이 사용할 도구를 결정하기 위해 자연어를 분석한 결과 메시지
+        # 에이전트가 LLM을 활용해 추론(Reasoning)
+        AIMessage(
+            content='',
+            additional_kwargs={
+                'function_call': {
+                    'name': 'get_weather',
+                    'arguments': '{"city": "\\uc11c\\uc6b8"}'
+                }
+            },
+            response_metadata={
+                'prompt_feedback': {
+                    'block_reason': 0,
+                    'safety_ratings': []
+                },
+                'finish_reason': 'STOP',
+                'model_name': 'gemini-2.5-flash',
+                'safety_ratings': []
+            },
+            id='run--2fb30164-9bda-4fae-a25c-de639156112f-0',
+            tool_calls=[
+                {
+                    'name': 'get_weather',
+                    'args': {'city': '서울'},
+                    'id': 'b6c49ee8-bdc1-41ff-9ca3-60eba794d60d',
+                    'type': 'tool_call'
+                }
+            ],
+            usage_metadata={
+                'input_tokens': 74,
+                'output_tokens': 71,
+                'total_tokens': 145,
+                'input_token_details': {
+                    'cache_read': 0
+                },
+                'output_token_details': {
+                    'reasoning': 56
+                }
+            }
+        ),
+
+        # 3. 도구 실행 결과 메시지
+        ToolMessage(
+            content='서울 weather is good',
+            name='get_weather',
+            id='c7c18ecd-38cd-4a05-b423-041f90098695',
+            tool_call_id='b6c49ee8-bdc1-41ff-9ca3-60eba794d60d'
+        ),
+
+        # 4. LLM이 생성한 최종 답변
+        # 에이전트가 대화 내용을 바탕으로 LLM을 활용해 최종 답변 생성
+        AIMessage(
+            content='서울 날씨는 좋습니다.',
+            additional_kwargs={},
+            response_metadata={
+                'prompt_feedback': {
+                    'block_reason': 0,
+                    'safety_ratings': []
+                },
+                'finish_reason': 'STOP',
+                'model_name': 'gemini-2.5-flash',
+                'safety_ratings': []
+            },
+            id='run--a2799f53-0220-432a-90a8-5c455efa0c7c-0',
+            usage_metadata={
+                'input_tokens': 107,
+                'output_tokens': 6,
+                'total_tokens': 113,
+                'input_token_details': {
+                    'cache_read': 0
+                }
+            }
+        )
+    ]
+}

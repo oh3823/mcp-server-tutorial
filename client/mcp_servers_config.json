@@ -1,0 +1,13 @@
+{
+  "weather_server": {
+    "transport": "stdio",
+    "command": "python",
+    "args": [
+      "../server/weather_server.py"
+    ]
+  },
+  "calculator_server": {
+    "transport": "streamable_http",
+    "url": "http://localhost:8000/mcp"
+  }
+}
